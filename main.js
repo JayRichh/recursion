@@ -141,3 +141,48 @@ function replicate(times, number) {
 console.log(replicate(3, 5)); // [5, 5, 5]
 console.log(replicate(1, 69)); // [69]
 console.log(replicate(-2, 6)); // []
+
+//* Using iteration, write a function fibs which takes a number and returns an array containing that many numbers from the fibonacci sequence. Using an example input of 8, this method should return the array [0, 1, 1, 2, 3, 5, 8, 13].
+function fibs(number) {
+  let result = [0, 1];
+
+  for (let i = 2; i < number; i++) {
+    result.push(result[i - 2] + result[i - 1]);
+  }
+
+  return result;
+}
+
+console.log(fibs(1)); // [0]
+console.log(fibs(2)); // [0, 1]
+console.log(fibs(5)); // [0, 1, 1, 2, 3]
+console.log(fibs(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
+
+//* Write a function that takes a string and returns a new string with all vowels removed.
+function disemvowel(string) {
+  let vowels = "aeiouAEIOU";
+  let result = "";
+
+  for (let i = 0; i < string.length; i++) {
+    if (vowels.indexOf(string[i]) === -1) {
+      result += string[i];
+    }
+  }
+  return result;
+}
+
+console.log(disemvowel("foobar")); // fbr
+console.log(disemvowel("ruby")); // rby
+console.log(disemvowel("aeiou")); // ""
+
+//* Write a function that takes a string and returns true if it is a palindrome, false if it is not. A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. Allowances may be made for adjustments to capital letters, punctuation, and word dividers.
+function palindrome(string) {
+  let reversed = string.split("").reverse().join("");
+
+  return string === reversed;
+}
+
+console.log(palindrome("tacocat")); // true
+console.log(palindrome("foobar")); // false
+console.log(palindrome("amanaplanacanalpanama")); // true
+console.log(palindrome("amanaplanacanalpandemonium")); // false
