@@ -186,3 +186,35 @@ console.log(palindrome("tacocat")); // true
 console.log(palindrome("foobar")); // false
 console.log(palindrome("amanaplanacanalpanama")); // true
 console.log(palindrome("amanaplanacanalpandemonium")); // false
+
+//* Merge sort
+function merge(left, right) {
+  let result = [];
+
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+
+  while (left.length) result.push(left.shift());
+  while (right.length) result.push(right.shift());
+
+  return result;
+}
+
+function mergeSort(array) {
+  if (array.length === 1) return array;
+
+  let middle = Math.floor(array.length / 2);
+  let left = array.slice(0, middle);
+  let right = array.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+console.log(mergeSort([10, 24, 76, 73])); // [10, 24, 73, 76]
+console.log(mergeSort([10, 24, 76, 73, 72, 1, 9])); // [1, 9, 10, 24, 72, 73, 76]
+console.log(mergeSort([1, 2, 3])); // [1, 2, 3]
